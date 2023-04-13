@@ -4,6 +4,15 @@ const app = express();
 
 const port = 4000;
 
+// Serve static files
+app.use(express.static('public'));
+
+app.get('/', (req, res) => {
+    res.sendFile(__dirname + '/public/index.html');
+});
+
+
+// Connect to MySQL
 const connection = mysql.createConnection({
     host: 'localhost',
     user: 'root',
@@ -11,19 +20,12 @@ const connection = mysql.createConnection({
     database: 'haaletussusteem'
 });
 
+
 connection.connect((err) => {
     if (err) throw err;
     console.log('Connected to MySQL Server!');
 });
 
-connection.query('SELECT * FROM haaletus', (err, rows) => {
-    if (err) throw err;
-
-    console.log('Data received from Db:');
-    console.log(rows);
-});
-
-connection.end((err) => {
-    if (err) throw err;
-    console.log('Connection closed');
+app.listen(port, () => {
+    console.log(`Server running at http://localhost:${port}`);
 });
