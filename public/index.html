@@ -5,22 +5,43 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="main.css">
     <title>Hääletussüsteem</title>
 </head>
 <body>
-<h1>Voting System</h1>
-<form method="post" action="submit_vote.php">
-    <label for="first_name">First Name:</label>
-    <input type="text" id="first_name" name="first_name" required><br><br>
-    <label for="last_name">Last Name:</label>
-    <input type="text" id="last_name" name="last_name" required><br><br>
-    <label for="vote">Vote:</label>
-    <label class="switch">
-        <input type="checkbox" id="vote" name="vote" value="1" onclick="this.value=this.checked?1:0">
-        <span class="slider round"></span>
-    </label><br><br>
-    <input type="submit" value="Submit">
-</form>
+
+    <div>
+        <div>
+            <form method="post" action="submit_vote.php" autocomplete="off">
+                <input type="text" id="first_name" name="first_name" placeholder="Eesnimi" required><br><br>
+                <input type="text" id="last_name" name="last_name" placeholder="Perenimi" required><br><br>
+                <label class="switch">
+                    <input type="checkbox" id="vote" name="vote" value="1" onclick="this.value=this.checked?1:0">
+                    <span class="slider round"></span>
+                </label><br><br>
+                <input type="submit" value="Hääleta" id="submit">
+            </form>
+        </div>
+    <svg width="638" height="410" viewBox="0 0 638 410" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <g filter="url(#filter0_d_1_5)">
+            <rect x="4" width="630" height="402" rx="25" fill="#767676"/>
+        </g>
+        <defs>
+            <filter id="filter0_d_1_5" x="0" y="0" width="638" height="410" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+                <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+                <feOffset dy="4"/>
+                <feGaussianBlur stdDeviation="2"/>
+                <feComposite in2="hardAlpha" operator="out"/>
+                <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"/>
+                <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_1_5"/>
+                <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_1_5" result="shape"/>
+            </filter>
+        </defs>
+    </svg>
+    </div>
 </body>
 </html>
