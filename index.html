@@ -7,24 +7,32 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="main.css">
     <title>Hääletussüsteem</title>
 </head>
 <body>
+    <form method="post" action="submit_vote.php" autocomplete="off">
 
-    <div>
-        <div>
-            <form method="post" action="submit_vote.php" autocomplete="off">
-                <input type="text" id="first_name" name="first_name" placeholder="Eesnimi" required><br><br>
-                <input type="text" id="last_name" name="last_name" placeholder="Perenimi" required><br><br>
-                <label class="switch">
-                    <input type="checkbox" id="vote" name="vote" value="1" onclick="this.value=this.checked?1:0">
-                    <span class="slider round"></span>
-                </label><br><br>
-                <input type="submit" value="Hääleta" id="submit">
-            </form>
-        </div>
+        <input type="text" id="first_name" name="first_name" placeholder="Eesnimi" required>
+        <input type="text" id="last_name" name="last_name" placeholder="Perenimi" required>
+
+        <label for="poolt" class="checkbox-label">
+            <input id="poolt" type="checkbox" name="vote" value="1">
+            <span class="checkbox-text">Poolt</span>
+        </label>
+
+        <label for="vastu" class="checkbox-label">
+            <input id="vastu" type="checkbox" name="vote" value="0">
+            <span class="checkbox-text">Vastu</span>
+        </label>
+
+        <label for="valik" class="checkbox-label">
+            <input type="submit" id="valik" value="">
+            <span class="checkbox-text">Hääleta</span>
+        </label>
+    </form>
     <svg width="638" height="410" viewBox="0 0 638 410" fill="none" xmlns="http://www.w3.org/2000/svg">
         <g filter="url(#filter0_d_1_5)">
             <rect x="4" width="630" height="402" rx="25" fill="#767676"/>
@@ -42,6 +50,21 @@
             </filter>
         </defs>
     </svg>
-    </div>
+    <script>
+        $(document).ready(function() {
+            $('input[type="checkbox"]').click(function() {
+                // If the checkbox that was clicked is option 1
+                if ($(this).val() == 1) {
+                    // Uncheck option 2 if it's checked
+                    $('input[value="0"]').prop('checked', false);
+                }
+                // If the checkbox that was clicked is option 2
+                else if ($(this).val() == 0) {
+                    // Uncheck option 1 if it's checked
+                    $('input[value="1"]').prop('checked', false);
+                }
+            });
+        });
+    </script>
 </body>
 </html>

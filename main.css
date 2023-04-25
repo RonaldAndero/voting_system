@@ -1,0 +1,80 @@
+body {
+    height: 100vh;
+    background-color: #212121;
+    margin: 0;
+    padding: 0;
+}
+
+form {
+    position: absolute;
+}
+
+/* poolt vastu kastid */
+
+form label {
+    cursor: pointer;
+}
+
+form label input[type="checkbox"] {
+    display: none;
+}
+
+form label span {
+    position: relative;
+    display: inline-block;
+    background-color: #EFEFF5;
+    padding: 15px 30px;
+    font-family: 'Poppins', sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 36px;
+    color: #212121;
+    border-radius: 15px;
+    user-select: none;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+form label span:before{
+    background: #EFEFF5;
+}
+
+form label input[type="checkbox"]:checked ~ span {
+    background: #212121;
+    color: #EFEFF5;
+}
+
+#valik {
+    display: none
+}
+
+
+input#first_name {
+    width: 568px;
+    height: 66px;
+    border: none;
+    background: #EFEFF5;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 15px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 36px;
+}
+
+input#last_name {
+    width: 568px;
+    height: 66px;
+    border: none;
+    background: #EFEFF5;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 15px;
+    display: flex;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 36px;
+}
+
+
+
