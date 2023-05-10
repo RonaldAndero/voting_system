@@ -45,6 +45,8 @@ if ($result->num_rows > 0) {
           color: #fff;
           font-size: 24px;
         '>Vote registered successfully!</div>";
+      // Redirect to index.html after 10 seconds
+      header("refresh:3; url=index.html");
     } else {
       echo "<body style='background-color: #212121;'>
         <div style='
@@ -58,6 +60,7 @@ if ($result->num_rows > 0) {
           color: #fff;
           font-size: 24px;
         '>Error: " . $sql . "<br>" . $conn->error . "</div>";
+        header("refresh:3; url=index.html");
     }
   } else {
     // Voting session is closed
@@ -73,6 +76,7 @@ if ($result->num_rows > 0) {
         color: #fff;
         font-size: 24px;
       '>Sorry, the voting session is closed.</div>";
+        header("refresh:3; url=index.html");
   }
 } else {
   // Voter does not exist in the database
@@ -88,8 +92,7 @@ if ($result->num_rows > 0) {
       color: #fff;
       font-size: 24px;
     '>Sorry, you are not registered to vote.</div>";
+        header("refresh:3; url=index.html");
 }
 
-
 $conn->close();
-?>
