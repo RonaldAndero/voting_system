@@ -75,6 +75,35 @@ BEGIN
     VALUES (OLD.id, NOW(), OLD.otsus, NEW.otsus);
 END$$
 DELIMITER ;
+
+DELIMITER $$
+CREATE TRIGGER tulemused_insert_trigger AFTER UPDATE ON voting_session
+FOR EACH ROW
+BEGIN
+    DECLARE haaletajate_arv INT;
+    DECLARE poolt INT;
+    DECLARE vastu INT;
+    
+    IF NEW.status = 'closed' AND OLD.status <> 'closed' THEN
+        SELECT COUNT(*) INTO haaletajate_arv FROM haaletus;
+        SELECT SUM(otsus) INTO poolt FROM haaletus;
+        SELECT SUM(1-otsus) INTO vastu FROM haaletus;
+        INSERT INTO tulemused (h_alguse_aeg, poolt, vastu, hääletanute_arv)
+        VALUES (OLD.start_time, poolt, vastu, haaletajate_arv);
+    END IF;
+END$$
+DELIMITER ;
+
+SET GLOBAL event_scheduler = ON;
+
+CREATE EVENT close_voting_session
+ON SCHEDULE EVERY 1 MINUTE
+DO
+  UPDATE voting_session 
+  SET status = 'closed'
+  WHERE status = 'open'
+  AND start_time <= NOW() - INTERVAL 5 MINUTE;
+
 ```
 8. You should now be able to use the application by navigating to localhost in your web browser
     
