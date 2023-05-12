@@ -109,11 +109,8 @@ DO
     
 ## Starting the session
 
-Currently these are the queries to start and end the voting session.
 
 ```sql
-UPDATE voting_session SET status='closed' WHERE status='open';
-
 UPDATE voting_session SET status='open' WHERE status='closed';
 ```
 
