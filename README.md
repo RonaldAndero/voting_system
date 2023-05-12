@@ -106,14 +106,6 @@ DO
 
 ```
 8. You should now be able to use the application by navigating to localhost in your web browser
-    
-## Starting the session
-
-
-```sql
-UPDATE voting_session SET status='open' WHERE status='closed';
-```
-
 
 ## Authors
 
